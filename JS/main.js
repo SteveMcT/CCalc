@@ -19,14 +19,14 @@ window.onload = function() {
 function change1() {
     em1.innerHTML = em2.innerHTML = ""
     let value = fval.value
+    value = value.replace(",", ".")
 
     var text1 = curr1.options[curr1.selectedIndex].text,
-        text2 = curr2.options[curr2.selectedIndex].text
+        text2 = curr2.options[curr2.selectedIndex].text;
 
-    if (text1 === text2) {
-        em1.innerHTML = "Please use different currencies"
-    } else if (isNaN(value))
-        em1.innerHTML = "Please enter a valid value"
+    if (value == "") em1.innerHTML = "Please enter a value"
+    else if (text1 === text2) em1.innerHTML = "Please use different currencies"
+    else if (isNaN(value)) em1.innerHTML = "Please enter a valid value"
     else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
@@ -38,15 +38,14 @@ function change1() {
 function change2() {
     em1.innerHTML = em2.innerHTML = ""
     let value = sval.value
+    value = value.replace(",", ".")
 
     var text2 = curr1.options[curr1.selectedIndex].text,
-        text1 = curr2.options[curr2.selectedIndex].text
+        text1 = curr2.options[curr2.selectedIndex].text;
 
-
-    if (text1 === text2) {
-        em2.innerHTML = "Please use different currencies"
-    } else if (isNaN(value))
-        em2.innerHTML = "Please enter a valid value"
+    if (value == "") em2.innerHTML = "Please enter a value"
+    else if (text1 === text2) em2.innerHTML = "Please use different currencies"
+    else if (isNaN(value)) em2.innerHTML = "Please enter a valid value"
     else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
@@ -57,5 +56,6 @@ function change2() {
 
 function isNaN(x) {
     x = x.replace(".", "")
+    x = x.replace("-", "")
     return isnum = !/^\d+$/.test(x);
 }
