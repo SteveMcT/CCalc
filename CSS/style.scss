@@ -73,6 +73,7 @@ button {
         font-size: 20px;
         color: rgba(0, 0, 0, 0.562);
         left: 16%;
+        width: 80%;
         &:first-child {
             margin-bottom: 20px;
         }
@@ -128,5 +129,28 @@ button {
     .curr {
         right: -5%;
         width: 20%;
+    }
+}
+
+#slide {
+    position: absolute;
+    margin-top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    #rangeInput {
+        width: 200px;
+        box-sizing: border-box;
+        height: 4px;
+        background: #fff;
+        cursor: pointer;
+        -webkit-appearance: none;
+        outline: none;
+        display: block;
+    }
+    #amount {
+        position: relative;
+        font-size: 35px;
+        margin-left: 10px;
+        left: 40%;
     }
 }

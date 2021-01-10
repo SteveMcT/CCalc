@@ -1,6 +1,7 @@
 var fval, sval, em1, em2, curr1, curr2
 let currencyList = ["AUD", "GBP", "EUR", "JPY", "CHF", "USD", "AUD", "BRL", "GBP", "CNY", "RUB", "ESP", "BTC"]
-let url = 'https://currencies.apps.grandtrunk.net/getlatest/eur/usd'
+let url = 'https://currencies.apps.grandtrunk.net/getlatest/eur/usd',
+    commas = 6
 
 for (i = 0; i < currencyList.length; i++) {
     console.log("<option value='" + currencyList[i] + "'>" + currencyList[i] + "</option>")
@@ -21,6 +22,8 @@ function change1() {
     let value = fval.value
     value = value.replace(",", ".")
 
+    console.log(commas)
+
     var text1 = curr1.options[curr1.selectedIndex].text,
         text2 = curr2.options[curr2.selectedIndex].text;
 
@@ -30,7 +33,7 @@ function change1() {
     else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
-                sval.value = parseFloat(value * data).toFixed(6)
+                sval.value = parseFloat(value * data).toFixed(commas)
             });
     }
 }
@@ -49,9 +52,15 @@ function change2() {
     else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
-                fval.value = parseFloat(value * data).toFixed(6)
+                fval.value = parseFloat(value * data).toFixed(commas)
             });
     }
+}
+
+function changeComma(val) {
+    commas = val
+    change1()
+    change2()
 }
 
 function isNaN(x) {

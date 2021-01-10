@@ -48,6 +48,11 @@
             <option value='RUB'>RUB</option>
         </select>
         <p class="errorfield" id="calcField_tool2"></p>
+
+        <div id="slide">
+            <input type="range" id="rangeInput" name="rangeInput" min="0" max="30" onchange="changeComma(value)" value="6" oninput="amount.value=rangeInput.value">
+            <output id="amount" name="amount" for="rangeInput">6</output>
+        </div>
     </div>
 </body>
 
