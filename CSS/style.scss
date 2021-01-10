@@ -1,0 +1,153 @@
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue);
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+body,
+html {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden !important;
+    background: linear-gradient(40deg, #ff0080, #ffd900);
+    background-size: 400%;
+    animation: bg 12s linear infinite;
+}
+
+@keyframes bg {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+    margin-top: 80px;
+    text-shadow: 7px 8px #afafaf7a;
+}
+
+button {
+    border: none;
+    outline: none;
+    &:active {
+        outline: none;
+    }
+}
+
+#calcField {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    .calcField_tf {
+        position: relative;
+        left: 15%;
+        width: 60%;
+        font-size: 40px;
+        border: none;
+        outline: none;
+        padding: 3px 5px;
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: .4s;
+        &:hover,
+        &:focus {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        &:active {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    .calcField_button {
+        font-size: 40px;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 4px 10px;
+        position: relative;
+        display: inline-block;
+        transition: .4s;
+        border-radius: 8px;
+        right: -15%;
+        width: 10%;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        &:active {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    p {
+        position: relative;
+        font-size: 20px;
+        left: 16%;
+        &:first-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    h1 {
+        position: relative;
+        font-size: 80px;
+        margin-top: 20px;
+    }
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+#calcField p:first-child {
+    margin-bottom: 20px;
+}
+
+
+/*
+*
+* This is for the currencies (dropdown) you can select"
+*
+*/
+
+.curr {
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    position: relative;
+    display: inline-block;
+    transition: .4s;
+    border-radius: 8px;
+    right: -15%;
+    width: 10%;
+    outline: none;
+    border: none;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    &:active {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    option {
+        background: transparent !important;
+        &:hover {
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+    }
+}

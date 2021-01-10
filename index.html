@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCalc</title>
+
+    <link rel="icon" type="image/png" href="IMG/facivon.png" />
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/main.js"></script>
+
+</head>
+
+<body>
+    <h1>Currency Calculator</h1>
+
+    <div id="calcField">
+        <input type="text" class="calcField_tf" id="curr1Field" oninput="change1()">
+        <select class="curr" id="curr1" onchange="change1()">
+            <option value='EUR'>EUR</option>
+            <option value='AUD'>AUD</option>
+            <option value='BRL'>BRL</option>
+            <option value='BTC'>BTC</option>
+            <option value='CHF'>CHF</option>
+            <option value='CNY'>CNY</option>
+            <option value='GBP'>GBP</option>
+            <option value='JPY'>JPY</option>
+            <option value='RUB'>RUB</option>
+            <option value='USD'>USD</option>
+        </select>
+
+        <p id="calcField_tool1"></p><br>
+        <input type="text" class="calcField_tf" id="curr2Field" oninput="change2()">
+        <select class="curr" id="curr2" onchange="change2()">
+            <option value='USD'>USD</option>
+            <option value='AUD'>AUD</option>
+            <option value='BRL'>BRL</option>
+            <option value='BTC'>BTC</option>
+            <option value='CHF'>CHF</option>
+            <option value='CNY'>CNY</option>
+            <option value='EUR'>EUR</option>
+            <option value='GBP'>GBP</option>
+            <option value='JPY'>JPY</option>
+            <option value='RUB'>RUB</option>
+        </select>
+        <p id="calcField_tool2"></p>
+    </div>
+</body>
+
+</html>
