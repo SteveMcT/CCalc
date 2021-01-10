@@ -143,15 +143,15 @@ button:active {
     margin-top: 20px;
   }
   .errorfield {
-    left: 5.5%;
+    left: 5.3%;
   }
   .calcField_tf {
-    left: 5% !important;
+    left: 3% !important;
     width: 70% !important;
   }
   .curr {
-    right: -5%;
-    width: 20%;
+    right: -3%;
+    width: 22%;
   }
 }
 
