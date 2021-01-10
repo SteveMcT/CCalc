@@ -28,9 +28,11 @@ function change1() {
         text2 = curr2.options[curr2.selectedIndex].text;
 
     if (value == "") em1.innerHTML = "Please enter a value"
-    else if (text1 === text2) em1.innerHTML = "Please use different currencies"
     else if (isNaN(value)) em1.innerHTML = "Please enter a valid value"
-    else {
+    else if (text1 === text2) {
+        em1.innerHTML = "Please use different currencies"
+        sval.value = value
+    } else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
                 sval.value = parseFloat(value * data).toFixed(commas)
@@ -47,9 +49,11 @@ function change2() {
         text1 = curr2.options[curr2.selectedIndex].text;
 
     if (value == "") em2.innerHTML = "Please enter a value"
-    else if (text1 === text2) em2.innerHTML = "Please use different currencies"
     else if (isNaN(value)) em2.innerHTML = "Please enter a valid value"
-    else {
+    else if (text1 === text2) {
+        em2.innerHTML = "Please use different currencies"
+        fval.value = value
+    } else {
         $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
             function(data) {
                 fval.value = parseFloat(value * data).toFixed(commas)
