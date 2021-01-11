@@ -14,15 +14,19 @@ window.onload = function() {
 
 function change1() {
     em1.innerHTML = em2.innerHTML = ""
-    let value = fval.value
-    value = value.replace(",", ".")
 
+    let value = fval.value
+    if (isNaN(value)) {
+        em1.innerHTML = "Please enter a valid value"
+        return
+    }
+    value = eval(value).toString()
+    value = value.replace(",", ".")
 
     var text1 = curr1.options[curr1.selectedIndex].text,
         text2 = curr2.options[curr2.selectedIndex].text;
 
     if (value == "") em1.innerHTML = "Please enter a value"
-    else if (isNaN(value)) em1.innerHTML = "Please enter a valid value"
     else if (text1 === text2) {
         em1.innerHTML = "Please use different currencies"
         sval.value = value
@@ -36,14 +40,20 @@ function change1() {
 
 function change2() {
     em1.innerHTML = em2.innerHTML = ""
+
     let value = sval.value
+    if (isNaN(value)) {
+        em2.innerHTML = "Please enter a valid value"
+        return
+    }
+
+    value = eval(value).toString()
     value = value.replace(",", ".")
 
     var text2 = curr1.options[curr1.selectedIndex].text,
         text1 = curr2.options[curr2.selectedIndex].text;
 
     if (value == "") em2.innerHTML = "Please enter a value"
-    else if (isNaN(value)) em2.innerHTML = "Please enter a valid value"
     else if (text1 === text2) {
         em2.innerHTML = "Please use different currencies"
         fval.value = value
@@ -62,7 +72,6 @@ function changeComma(val) {
 }
 
 function isNaN(x) {
-    x = x.replace(".", "")
-    x = x.replace("-", "")
+    x = x.replaceAll(".", "").replaceAll(",", "").replaceAll("+", "").replaceAll("-", "").replaceAll("*", "").replaceAll("/", "")
     return isnum = !/^\d+$/.test(x);
 }
