@@ -11,7 +11,6 @@ window.onload = function() {
     this.curr2 = document.getElementById("curr2")
 }
 
-
 function change1() {
     em1.innerHTML = em2.innerHTML = ""
 
@@ -25,6 +24,8 @@ function change1() {
 
     var text1 = curr1.options[curr1.selectedIndex].text,
         text2 = curr2.options[curr2.selectedIndex].text;
+
+    testStr = value.split()
 
     if (value == "") em1.innerHTML = "Please enter a value"
     else if (text1 === text2) {
