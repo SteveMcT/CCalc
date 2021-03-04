@@ -12,6 +12,13 @@
 
     <link rel="stylesheet" href="CSS/style.css">
     <script src="JS/calc.js"></script>
+    <script>
+        let calc = new Calculations()
+
+        function update(val) {
+            calc.change(val);
+        }
+    </script>
 
 </head>
 
@@ -19,8 +26,8 @@
     <h1>Currency Calculator</h1>
 
     <div id="calcField">
-        <input type="text" class="calcField_tf" id="curr1Field" oninput="change1()">
-        <select class="curr" id="curr1" onchange="change1()">
+        <input type="text" class="calcField_tf" id="curr1Field" oninput="update('fval')">
+        <select id="curr1" onchange="update('fval')">
             <option value='EUR'>EUR</option>
             <option value='AUD'>AUD</option>
             <option value='BRL'>BRL</option>
@@ -44,8 +51,8 @@
         </select>
 
         <p class="errorfield" id="calcField_tool1"></p><br>
-        <input type="text" class="calcField_tf" id="curr2Field" oninput="change2()">
-        <select class="curr" id="curr2" onchange="change2()">
+        <input type="text" class="calcField_tf" id="curr2Field" oninput="update('sval')">
+        <select id="curr2" onchange="update('sval')">
             <option value='USD'>USD</option>
             <option value='AUD'>AUD</option>
             <option value='BRL'>BRL</option>

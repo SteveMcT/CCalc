@@ -101,11 +101,10 @@ button:active {
 }
 
 /*
-*
-* This is for the currencies (dropdown) you can select"
-*
+*   currencies (dropdown) 
 */
-.curr {
+#curr1,
+#curr2 {
   font-size: 40px;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 4px 10px;
@@ -120,19 +119,23 @@ button:active {
   border: none;
 }
 
-.curr:hover {
+#curr1:hover,
+#curr2:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.curr:active {
+#curr1:active,
+#curr2:active {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.curr option {
+#curr1 option,
+#curr2 option {
   background: transparent !important;
 }
 
-.curr option:hover {
+#curr1 option:hover,
+#curr2 option:hover {
   background: rgba(0, 0, 0, 0.6) !important;
 }
 
@@ -149,7 +152,8 @@ button:active {
     left: 3% !important;
     width: 70% !important;
   }
-  .curr {
+  #curr1,
+  #curr2 {
     right: -3%;
     width: 22%;
   }

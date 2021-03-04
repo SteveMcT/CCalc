@@ -82,12 +82,11 @@ button {
 
 
 /*
-*
-* This is for the currencies (dropdown) you can select"
-*
+*   currencies (dropdown) 
 */
 
-.curr {
+#curr1,
+#curr2 {
     font-size: 40px;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 4px 10px;
@@ -126,7 +125,8 @@ button {
         left: 3% !important;
         width: 70% !important;
     }
-    .curr {
+    #curr1,
+    #curr2 {
         right: -3%;
         width: 22%;
     }

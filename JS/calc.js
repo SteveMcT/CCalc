@@ -1,78 +1,65 @@
-var fval, sval, em1, em2, curr1, curr2
-let url = 'https://currencies.apps.grandtrunk.net/getlatest/eur/usd',
-    commas = 6
+class Calculations {
 
-window.onload = function() {
-    this.fval = document.getElementById("curr1Field")
-    this.sval = document.getElementById("curr2Field")
-    this.em1 = document.getElementById("calcField_tool1")
-    this.em2 = document.getElementById("calcField_tool2")
-    this.curr1 = document.getElementById("curr1")
-    this.curr2 = document.getElementById("curr2")
-}
-
-function change1() {
-    em1.innerHTML = em2.innerHTML = ""
-
-    let value = fval.value
-    if (isNaN(value)) {
-        em1.innerHTML = "Please enter a valid value"
-        return
-    }
-    value = eval(value).toString()
-    value = value.replace(",", ".")
-
-    var text1 = curr1.options[curr1.selectedIndex].text,
-        text2 = curr2.options[curr2.selectedIndex].text;
-
-    testStr = value.split()
-
-    if (value == "") em1.innerHTML = "Please enter a value"
-    else if (text1 === text2) {
-        em1.innerHTML = "Please use different currencies"
-        sval.value = value
-    } else {
-        $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
-            function(data) {
-                sval.value = parseFloat(value * data).toFixed(commas)
-            });
-    }
-}
-
-function change2() {
-    em1.innerHTML = em2.innerHTML = ""
-
-    let value = sval.value
-    if (isNaN(value)) {
-        em2.innerHTML = "Please enter a valid value"
-        return
+    constructor() {
+        this.fval = $("#curr1Field")
+        this.sval = $("#curr2Field")
+        this.em1 = $("#calcField_tool1")
+        this.em2 = $("#calcField_tool2")
+        this.curr1 = $("#curr1")
+        this.curr2 = $("#curr2")
+        this.url = 'https://currencies.apps.grandtrunk.net/getlatest/eur/usd'
+        this.commas = 6
     }
 
-    value = eval(value).toString()
-    value = value.replace(",", ".")
+    change(type) {
 
-    var text2 = curr1.options[curr1.selectedIndex].text,
-        text1 = curr2.options[curr2.selectedIndex].text;
+        this.em1.innerHTML = this.em2.innerHTML = ""
 
-    if (value == "") em2.innerHTML = "Please enter a value"
-    else if (text1 === text2) {
-        em2.innerHTML = "Please use different currencies"
-        fval.value = value
-    } else {
-        $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
-            function(data) {
-                fval.value = parseFloat(value * data).toFixed(commas)
-            });
+        if (type === ('fval')) {
+            this.value = $('#fval')
+            this.second = $('#sval')
+            this.which = true
+            this.em = this.em1
+            this.text1 = this.curr1.val()
+            this.text2 = this.curr2.val()
+            this.t = $('#curr1Field')
+        } else {
+            this.value = $('#sval')
+            this.second = $('#fval')
+            this.which = false
+            this.em = this.em2
+            this.text2 = this.curr1.val()
+            this.text1 = this.curr2.val()
+            this.t = $('#curr2Field')
+        }
+
+        if (this.isNaN(this.t.val())) {
+            this.em.innerHTML = "Please enter a valid value"
+            return
+        }
+
+        this.value = eval(this.value).toString()
+        this.value = this.value.replace(",", ".")
+
+        if (this.value == "") this.em.innerHTML = "Please enter a value"
+        else if (this.text1 === this.text2) {
+            this.em.innerHTML = "Please use different currencies"
+            this.second.value = this.value
+        } else {
+            $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
+                function(data) {
+                    second.value = parseFloat(this.value * this.data).toFixed(this.commas)
+                });
+        }
     }
-}
 
-function changeComma(val) {
-    commas = val
-    change1()
-    change2()
-}
+    changeComma(val) {
+        commas = val
+        change('fval')
+    }
 
-function isNaN(x) {
-    x = x.replaceAll(".", "").replaceAll(",", "").replaceAll("+", "").replaceAll("-", "").replaceAll("*", "").replaceAll("/", "")
-    return isnum = !/^\d+$/.test(x);
+    isNaN(x) {
+        x = x.replaceAll(".", "").replaceAll(",", "").replaceAll("+", "").replaceAll("-", "").replaceAll("*", "").replaceAll("/", "")
+        return !/^\d+$/.test(x);
+    }
 }
