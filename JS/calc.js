@@ -16,20 +16,20 @@ class Calculations {
         this.em1.innerHTML = this.em2.innerHTML = ""
 
         if (type === ('fval')) {
-            this.value = $('#fval')
-            this.second = $('#sval')
+            this.value = $('#curr1field')
+            this.second = $('#curr2field')
             this.which = true
             this.em = this.em1
-            this.text1 = this.curr1.val()
-            this.text2 = this.curr2.val()
+            this.text1 = $("#curr1").val()
+            this.text2 = $("#curr2").val()
             this.t = $('#curr1Field')
         } else {
-            this.value = $('#sval')
-            this.second = $('#fval')
+            this.value = $('#curr2field')
+            this.second = $('#curr1field')
             this.which = false
             this.em = this.em2
-            this.text2 = this.curr1.val()
-            this.text1 = this.curr2.val()
+            this.text2 = $("#curr1").val()
+            this.text1 = $("#curr2").val()
             this.t = $('#curr2Field')
         }
 
@@ -38,6 +38,7 @@ class Calculations {
             return
         }
 
+        this.value = this.t.val()
         this.value = eval(this.value).toString()
         this.value = this.value.replace(",", ".")
 
@@ -46,9 +47,9 @@ class Calculations {
             this.em.innerHTML = "Please use different currencies"
             this.second.value = this.value
         } else {
-            $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + text1.toLowerCase() + '/' + text2.toLowerCase(),
+            $.getJSON('https://currencies.apps.grandtrunk.net/getlatest/' + this.text1.toLowerCase() + '/' + this.text2.toLowerCase(),
                 function(data) {
-                    second.value = parseFloat(this.value * this.data).toFixed(this.commas)
+                    this.second.value = parseFloat(this.value * data).toFixed(this.commas)
                 });
         }
     }
